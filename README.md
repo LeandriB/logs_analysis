@@ -56,6 +56,6 @@ GROUP BY Date;
 ## Resources
 
 * [SQL Documentation](https://www.w3schools.com/sql/)
-* [Select Statments](https://www.postgresql.org/docs/9.5/static/sql-select.html)
+* [Select Statements](https://www.postgresql.org/docs/9.5/static/sql-select.html)
 * [Create Table](https://www.postgresql.org/docs/9.4/static/sql-createtable.html)
 * [Errors and Exceptions](https://docs.python.org/3/tutorial/errors.html)
