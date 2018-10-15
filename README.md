@@ -57,5 +57,6 @@ GROUP BY Date;
 
 * [SQL Documentation](https://www.w3schools.com/sql/)
 * [Select Statements](https://www.postgresql.org/docs/9.5/static/sql-select.html)
-* [Create Table](https://www.postgresql.org/docs/9.4/static/sql-createtable.html)
+* [Create View](https://www.w3schools.com/sql/sql_view.asp)
 * [Errors and Exceptions](https://docs.python.org/3/tutorial/errors.html)
+* [Covert Datetime Value](http://www.sqlines.com/oracle-to-sql-server/to_char_datetime)
