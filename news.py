@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 
 import psycopg2
-#Imports postgresql library
+# Imports postgresql library
 DBNAME = "news"
 
 question_1 = "What are the most popular articles of all time?"
@@ -12,7 +12,6 @@ query_1 = """SELECT title, count(*) as views
              GROUP BY log.path, articles.title
              ORDER BY views desc
              LIMIT 3;"""
-             # The first question and SQL query
 
 question_2 = "Who are the most popular authors of all time?"
 query_2 = """SELECT authors.name, count(*) as views
@@ -23,26 +22,25 @@ query_2 = """SELECT authors.name, count(*) as views
              GROUP BY authors.name
              ORDER BY views desc
              LIMIT 3;"""
-             # The second question and SQL query
 
 question_3 = "On which days did more than 1% of requests lead to errors?"
 query_3 = """SELECT errors.date, round(100.0*countError/countLog,2) as percent
              FROM logs, errors
              WHERE logs.date = errors.date
              AND countError > countLog/100;"""
-             # The thrid question and SQL query
+
 
 class newsQuery:
     '''Defining a class with four methods assoctiated with it in
-      order to connect to the database, execute queries, fetching
-      results and closing the connection.'''
+       order to connect to the database, execute queries, fetching
+       results and closing the connection.'''
     def __init__(self):
-          try:
-              self.db = psycopg2.connect(database=DBNAME)
+        try:
+            self.db = psycopg2.connect(database=DBNAME)
             # Connect to the database
-              self.cursor = self.db.cursor()
-          except:
-          # Except statement
+            self.cursor = self.db.cursor()
+        except Exception as error:
+            # Except statement
             print "Error connecting to database"
 
     def execute_query(self, query):
@@ -67,8 +65,9 @@ class newsQuery:
         self.db.close()
         # Closes connection
 
+
 if __name__ == '__main__':
-# Prints results for queries
+    # Prints results for queries
     data = newsQuery()
     data.output(question_1, query_1)
     data.output(question_2, query_2)
