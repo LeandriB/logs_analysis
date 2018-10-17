@@ -5,26 +5,30 @@ import psycopg2
 DBNAME = "news"
 
 question_1 = "What are the most popular articles of all time?"
-query_1 = """SELECT title, count(*) as views
-             FROM articles JOIN
-             log on concat('/article/', articles.slug) = log.path
-             WHERE log.status = '200 OK'
-             GROUP BY log.path, articles.title
+query_1 = """SELECT title, views
+             FROM articles
+             JOIN
+                 (SELECT path, count(path) AS views
+                  FROM log
+                  GROUP BY log.path) AS log
+             ON log.path = '/article/' || articles.slug
              ORDER BY views desc
              LIMIT 3;"""
 
 question_2 = "Who are the most popular authors of all time?"
-query_2 = """SELECT authors.name, count(*) as views
-             FROM articles JOIN
-             authors on articles.author = authors.id JOIN
-             log on concat('/article/', articles.slug) = log.path
+query_2 = """SELECT name, count(*) AS views
+             FROM articles
+             JOIN authors
+             ON articles.author = authors.id
+             JOIN log
+             ON concat('/article/', articles.slug) = log.path
              WHERE log.status = '200 OK'
              GROUP BY authors.name
              ORDER BY views desc
              LIMIT 3;"""
 
 question_3 = "On which days did more than 1% of requests lead to errors?"
-query_3 = """SELECT errors.date, round(100.0*countError/countLog,2) as percent
+query_3 = """SELECT errors.date, round(100.0*countError/countLog,2) AS percent
              FROM logs, errors
              WHERE logs.date = errors.date
              AND countError > countLog/100;"""
