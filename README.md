@@ -42,16 +42,13 @@ The expected output can be found in the 'output.txt' file.
 
 **Views for Question 3:**
 
-> CREATE VIEW logs AS
-SELECT to_char(time,'DD-MON-YYYY') as Date, count(*) as countLog
-FROM log
-GROUP BY Date;
+![](View_1.png)
 
-> CREATE VIEW errors AS
-SELECT to_char(time,'DD-MON-YYYY') as Date, count(*) as countError
-FROM log
-WHERE STATUS = '404 NOT FOUND'
-GROUP BY Date;
+![](View_2.png)
+
+## Expected Output
+
+![](Expected_Output.png)
 
 ## Resources
 
