@@ -42,13 +42,13 @@ The expected output can be found in the 'output.txt' file.
 
 **Views for Question 3:**
 
-![](View_1.png)
+![View_1](/screenshots/View_1.png)
 
-![](View_2.png)
+![View_2](/screenshots/View_2.png)
 
 ## Expected Output
 
-![](Expected_Output.png)
+![Expected Output](Expected_Output.png)
 
 ## Resources
 
